@@ -1,11 +1,11 @@
 {
-  "name": "netlify-plugin-form-submissions",
+  "name": "netlify-plugin-form-submissions-two",
   "version": "0.1.4",
   "description": "A Netlify plugin to fetch all form submission on a Netlify site, and stash them as JSON files ready for the build to use. ",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/philhawksworth/netlify-plugin-form-submissions"
+    "url": "https://github.com/wingsooyoung/netlify-plugin-form-submissions"
   },
   "keywords": [
     "netlify",
