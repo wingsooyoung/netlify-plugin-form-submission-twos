@@ -17,7 +17,7 @@ const getFormSubmissions = async function(formName, path) {
   const submissions = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}`).then(res => res.json());
   console.log(res.json()); //delete 
   await fs.writeFileSync(path, JSON.stringify(submissions)); 
-  console.log(submissions); //delete
+  console.log(submissions); //delete maybe
   console.log('Form submissions data saved:', chalk.yellow(path));
 };
 
