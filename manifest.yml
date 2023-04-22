@@ -1,4 +1,4 @@
-name: netlify-plugin-form-submissions
+name: netlify-plugin-form-submissions-two
 inputs:
   - name: formNames
     default: "All"
