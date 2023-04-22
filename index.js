@@ -43,6 +43,7 @@ const getFormSubmissions = async function(formName, path) {
   await fs.appendFileSync(path, JSON.stringify(page7));
 
   console.log('Form submissions data saved:', chalk.yellow(path));
+  console.log(fs.readFileSync(path))
 };
 
 
