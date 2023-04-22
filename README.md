@@ -1,6 +1,7 @@
 # Netlify Plugin - Form Submissions
 
-ALRIGHT babe let's try and get some pagination going here...
+> *<sub>ALRIGHT babe let's try and get some pagination going here...</sub>*
+
 
 This [plugin](https://www.netlify.com/build/plugins-beta?utm_source=github&utm_medium=plugin-formsubmissions-pnh&utm_campaign=devex) adds the ability to fetch all submissions made to [Netlify Forms](https://www.netlify.com/products/forms/?utm_source=github&utm_medium=plugin-formsubmissions-pnh&utm_campaign=devex) in your site and stash them as JSON files before your build runs making the data available to your static site generator at build time.
 
