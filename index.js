@@ -14,10 +14,34 @@ let formIDs = {};
 
 const getFormSubmissions = async function(formName, path) {
   let formID = formIDs[formName];
-  const submissions = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}`).then(res => res.json());
-  console.log(res.json()); //delete 
-  await fs.writeFileSync(path, JSON.stringify(submissions)); 
-  console.log(submissions); //delete maybe
+  const submissions = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=1&per_page=100`)
+      .then(res => res.json());
+  await fs.writeFileSync(path, JSON.stringify(submissions));
+
+  const page2 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=2&per_page=100`)
+      .then(res => res.json());
+  await fs.appendFileSync(path, JSON.stringify(page2));
+
+  const page3 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=3&per_page=100`)
+      .then(res => res.json());
+  await fs.appendFileSync(path, JSON.stringify(page3));
+
+  const page4 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=4&per_page=100`)
+      .then(res => res.json());
+  await fs.appendFileSync(path, JSON.stringify(page4));
+
+  const page5 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=5&per_page=100`)
+      .then(res => res.json());
+  await fs.appendFileSync(path, JSON.stringify(page5));
+
+  const page6 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=6&per_page=100`)
+      .then(res => res.json());
+  await fs.appendFileSync(path, JSON.stringify(page6));
+
+  const page7 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=7&per_page=100`)
+      .then(res => res.json());
+  await fs.appendFileSync(path, JSON.stringify(page7));
+
   console.log('Form submissions data saved:', chalk.yellow(path));
 };
 
