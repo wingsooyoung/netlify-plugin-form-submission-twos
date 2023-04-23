@@ -20,27 +20,42 @@ const getFormSubmissions = async function(formName, path) {
 
   const page2 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=2&per_page=100`)
       .then(res => res.json());
-  await fs.appendFileSync(path, JSON.stringify(page2));
+  console.log(typeof page2)
+  // await fs.appendFileSync(path, JSON.stringify(page2));
+  //
+  // const page3 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=3&per_page=100`)
+  //     .then(res => res.json());
+  // await fs.appendFileSync(path, JSON.stringify(page3));
+  //
+  // const page4 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=4&per_page=100`)
+  //     .then(res => res.json());
+  // await fs.appendFileSync(path, JSON.stringify(page4));
+  //
+  // const page5 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=5&per_page=100`)
+  //     .then(res => res.json());
+  // await fs.appendFileSync(path, JSON.stringify(page5));
+  //
+  // const page6 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=6&per_page=100`)
+  //     .then(res => res.json());
+  // await fs.appendFileSync(path, JSON.stringify(page6));
+  //
+  // const page7 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=7&per_page=100`)
+  //     .then(res => res.json());
 
-  const page3 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=3&per_page=100`)
-      .then(res => res.json());
-  await fs.appendFileSync(path, JSON.stringify(page3));
+  const fsPromises = fs.promises;
+  fsPromises.readFile(path, 'utf8')
+      .then(data => {
+        let json = JSON.parse(data);
+        json.concat(page2);
 
-  const page4 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=4&per_page=100`)
-      .then(res => res.json());
-  await fs.appendFileSync(path, JSON.stringify(page4));
+        fsPromises.writeFile(path, JSON.stringify(json))
+            .then(  () => { console.log('Append Success'); })
+            .catch(err => { console.log("Append Failed: " + err);});
+      })
+      .catch(err => { console.log("Read Error: " +err);});
 
-  const page5 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=5&per_page=100`)
-      .then(res => res.json());
-  await fs.appendFileSync(path, JSON.stringify(page5));
 
-  const page6 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=6&per_page=100`)
-      .then(res => res.json());
-  await fs.appendFileSync(path, JSON.stringify(page6));
 
-  const page7 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=7&per_page=100`)
-      .then(res => res.json());
-  await fs.appendFileSync(path, JSON.stringify(page7));
 
   console.log('Form submissions data saved:', chalk.yellow(path));
   const arethesemysubs = await fs.readFileSync(path);
