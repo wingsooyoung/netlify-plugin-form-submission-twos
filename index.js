@@ -19,8 +19,12 @@ const getFormSubmissions = async function(formName, path) {
   await fs.writeFileSync(path, JSON.stringify(submissions));
 
   const page2 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=2&per_page=100`)
-      .then(res => res.json());
-  console.log(typeof page2)
+      .then(res => res.json())
+      .then(data => {
+        //make json object into just json and push to og submissions thing
+      })
+  // console.log(typeof page2)
+
   // await fs.appendFileSync(path, JSON.stringify(page2));
   //
   // const page3 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=3&per_page=100`)
@@ -58,8 +62,8 @@ const getFormSubmissions = async function(formName, path) {
 
 
   console.log('Form submissions data saved:', chalk.yellow(path));
-  const arethesemysubs = await fs.readFileSync(path);
-  console.log(arethesemysubs.toString());
+  // const arethesemysubs = await fs.readFileSync(path);
+  // console.log(arethesemysubs.toString());
 };
 
 
@@ -99,9 +103,10 @@ module.exports = {
 
     // get submissions to each form in parallel
     const promises = chosenForms.map((formName) => {
-      const dataFilePath = `${inputs.dataDirectory}/${formName}_submissions.json`;
+      const dataFilePath = `${inputs.dataDirectory}/${formName}_submissions.json`; //i could try changing this to have one file per page of 100 submissions??
       return getFormSubmissions(formName, dataFilePath)
     });
+
     await Promise.all(promises);
 
 
