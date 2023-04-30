@@ -21,9 +21,9 @@ const getFormSubmissions = async function(formName, path) {
   const page2 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=2&per_page=100`)
       .then(res => res.json())
       .then(data => {
-        //make json object into just json and push to og submissions thing
+        console.log(data.entries())
       })
-  // console.log(typeof page2)
+  console.log(typeof page2)
 
   // await fs.appendFileSync(path, JSON.stringify(page2));
   //
