@@ -16,13 +16,13 @@ const getFormSubmissions = async function(formName, path) {
   let formID = formIDs[formName];
 
   const submissions = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=1&per_page=100`)
-      .then(res => JSON.stringify(res.json()))
+      .then(res => res.json())
   await fs.writeFileSync(path, JSON.stringify(submissions));
 
   try {
     //code
     var page2 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=2&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
           if (res.length === 0){
             throw new Error("-twos error message, next page empty")
@@ -32,7 +32,7 @@ const getFormSubmissions = async function(formName, path) {
         }
         )
     var page3 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=3&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
               if (res.length === 0){
                 throw new Error("-twos error message, next page empty")
@@ -42,7 +42,7 @@ const getFormSubmissions = async function(formName, path) {
             }
         )
     var page4 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=4&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
               if (res.length === 0){
                 throw new Error("-twos error message, next page empty")
@@ -52,7 +52,7 @@ const getFormSubmissions = async function(formName, path) {
             }
         )
     var page5 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=5&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
               if (res.length === 0){
                 throw new Error("-twos error message, next page empty")
@@ -62,7 +62,7 @@ const getFormSubmissions = async function(formName, path) {
             }
         )
     var page6 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=6&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
               if (res.length === 0){
                 throw new Error("-twos error message, next page empty")
@@ -72,7 +72,7 @@ const getFormSubmissions = async function(formName, path) {
             }
         )
     var page7 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=7&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
               if (res.length === 0){
                 throw new Error("-twos error message, next page empty")
@@ -82,7 +82,7 @@ const getFormSubmissions = async function(formName, path) {
             }
         )
     var page8 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=8&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
               if (res.length === 0){
                 throw new Error("-twos error message, next page empty")
@@ -92,7 +92,7 @@ const getFormSubmissions = async function(formName, path) {
             }
         )
     var page9 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=9&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
               if (res.length === 0){
                 throw new Error("-twos error message, next page empty")
@@ -102,7 +102,7 @@ const getFormSubmissions = async function(formName, path) {
             }
         )
     var page10 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=10&per_page=100`)
-        .then(res => JSON.stringify(res.json()))
+        .then(res => res.json())
         .then((res) => {
               if (res.length === 0){
                 throw new Error("-twos error message, next page empty")
