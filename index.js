@@ -17,7 +17,7 @@ const getFormSubmissions = async function(formName, path) {
 
   const submissions = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=1&per_page=100`)
       .then(res => JSON.stringify(res.json()))
-  // await fs.writeFileSync(path, JSON.stringify(submissions));
+  await fs.writeFileSync(path, JSON.stringify(submissions));
 
   try {
     //code
@@ -172,7 +172,7 @@ module.exports = {
     });
 
     // get submissions to specified forms or all forms?
-    const chosenForms = inputs.formNames == 'ALL' ? Object.keys(formIDs) : [].concat(inputs.formNames)
+    const chosenForms = inputs.formNames === 'ALL' ? Object.keys(formIDs) : [].concat(inputs.formNames)
 
     // get submissions to each form in parallel
     const promises = chosenForms.map((formName) => {
