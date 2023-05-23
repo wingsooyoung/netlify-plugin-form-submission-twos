@@ -14,43 +14,116 @@ let formIDs = {};
 
 const getFormSubmissions = async function(formName, path) {
   let formID = formIDs[formName];
+
   const submissions = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=1&per_page=100`)
-      .then(res => res.json());
-  await fs.writeFileSync(path, JSON.stringify(submissions));
+      .then(res => JSON.stringify(res.json()))
+  // await fs.writeFileSync(path, JSON.stringify(submissions));
 
-  const page2 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=2&per_page=100`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data.entries())
-      })
-  console.log(typeof page2)
+  try {
+    //code
+    var page2 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=2&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+          if (res.length === 0){
+            throw new Error("-twos error message, next page empty")
+          } else {
+            return res
+          }
+        }
+        )
+    var page3 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=3&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+              if (res.length === 0){
+                throw new Error("-twos error message, next page empty")
+              } else {
+                return res
+              }
+            }
+        )
+    var page4 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=4&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+              if (res.length === 0){
+                throw new Error("-twos error message, next page empty")
+              } else {
+                return res
+              }
+            }
+        )
+    var page5 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=5&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+              if (res.length === 0){
+                throw new Error("-twos error message, next page empty")
+              } else {
+                return res
+              }
+            }
+        )
+    var page6 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=6&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+              if (res.length === 0){
+                throw new Error("-twos error message, next page empty")
+              } else {
+                return res
+              }
+            }
+        )
+    var page7 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=7&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+              if (res.length === 0){
+                throw new Error("-twos error message, next page empty")
+              } else {
+                return res
+              }
+            }
+        )
+    var page8 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=8&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+              if (res.length === 0){
+                throw new Error("-twos error message, next page empty")
+              } else {
+                return res
+              }
+            }
+        )
+    var page9 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=9&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+              if (res.length === 0){
+                throw new Error("-twos error message, next page empty")
+              } else {
+                return res
+              }
+            }
+        )
+    var page10 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=10&per_page=100`)
+        .then(res => JSON.stringify(res.json()))
+        .then((res) => {
+              if (res.length === 0){
+                throw new Error("-twos error message, next page empty")
+              } else {
+                return res
+              }
+            }
+        )
 
-  // await fs.appendFileSync(path, JSON.stringify(page2));
-  //
-  // const page3 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=3&per_page=100`)
-  //     .then(res => res.json());
-  // await fs.appendFileSync(path, JSON.stringify(page3));
-  //
-  // const page4 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=4&per_page=100`)
-  //     .then(res => res.json());
-  // await fs.appendFileSync(path, JSON.stringify(page4));
-  //
-  // const page5 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=5&per_page=100`)
-  //     .then(res => res.json());
-  // await fs.appendFileSync(path, JSON.stringify(page5));
-  //
-  // const page6 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=6&per_page=100`)
-  //     .then(res => res.json());
-  // await fs.appendFileSync(path, JSON.stringify(page6));
-  //
-  // const page7 = await fetch(`https://api.netlify.com/api/v1/forms/${formID}/submissions?access_token=${NETLIFY_AUTH_TOKEN}&state=ham&page=7&per_page=100`)
-  //     .then(res => res.json());
+  } catch (error) {
+
+      console.log("e mes - "+ error)
+
+  }
+
 
   const fsPromises = fs.promises;
   fsPromises.readFile(path, 'utf8')
       .then(data => {
         let json = JSON.parse(data);
-        json.concat(page2);
+        json.concat(page2, page3, page4, page5, page6, page7, page8, page9, page10);
 
         fsPromises.writeFile(path, JSON.stringify(json))
             .then(  () => { console.log('Append Success'); })
